@@ -1,5 +1,5 @@
 ﻿// Написать функции:
-// Если слишком просто, то написать функции Add, Remove для массивов
+// Sort
 
 void FillArray(int[] array)
 {
@@ -36,6 +36,8 @@ void AddArray(int[] array)
     
     int number = new Random().Next(-100, 100);
     Console.WriteLine($"Число, которое добавляется к массиву: {number}");
+//    Console.Write("Введите число, которое необходимо добавить к массиву: ");
+//    int number = int.Parse(Console.ReadLine()!);
     
     while (index < length + 1)
     {
