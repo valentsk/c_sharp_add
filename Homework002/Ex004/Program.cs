@@ -28,66 +28,21 @@ void PrintArray(int[] array)
     Console.WriteLine();
 }
 
-void AddArray(int[] array)
+void SortArrayBuble(int[] array)
 {
     int length = array.Length;
-    int [] arrayNew = new int[length + 1]; 
-    int index = 0;
-    
-    int number = new Random().Next(-100, 100);
-    Console.WriteLine($"Число, которое добавляется к массиву: {number}");
-//    Console.Write("Введите число, которое необходимо добавить к массиву: ");
-//    int number = int.Parse(Console.ReadLine()!);
-    
-    while (index < length + 1)
+    for (int index = 0; index < length; index++)
     {
-        if (index < length)
+        for (int indexJ = 0; indexJ < length - 1; indexJ++) // сравниваем каждый indexовый элемент с остальными и меняем их местами
         {
-            arrayNew[index] = array[index];
-            Console.Write(arrayNew[index]);
-            Console.Write(", ");    
-        }
-        else
-        {
-            arrayNew[length] = number;
-            Console.Write(arrayNew[length]);
-        }
-        index++;
-    }
-    Console.WriteLine();
-}
-
-void RemoveArray(int[] array)
-{
-    int length = array.Length;
-    int [] arrayNew = new int[length - 1]; 
-    int index = 0;
-    int indexNew = 0;
-
-    int indexNumber = new Random().Next(0, length); // выбирает случайный индекс
-    Console.WriteLine($"Число, которое удалится из массива: {array[indexNumber]}, индекс: {indexNumber}");
- 
-    while (index < length)
-    {
-        if (index == indexNumber)
-        {
-            index++; // пропускаем индекс в 1 массиве
-        }
-        else
-        {
-            arrayNew[indexNew] = array[index];
-            Console.Write(arrayNew[indexNew]);
-            if (index < length - 1)
+            if (array[indexJ] > array[indexJ + 1])
             {
-               Console.Write(", ");    
+                int temp = array[indexJ];
+                array[indexJ] = array[indexJ + 1];
+                array[indexJ + 1] = temp;
             }
-            index++;
-            indexNew++;
         }
-
     }
-    Console.WriteLine();
-
 }
 
 Console.Write("Введите размерность массива: ");
@@ -96,5 +51,6 @@ int [] arrayOne = new int[size];
 
 FillArray(arrayOne);
 PrintArray(arrayOne);
-AddArray(arrayOne);
-RemoveArray(arrayOne);
+SortArrayBuble(arrayOne);
+Console.WriteLine("Сортированный массив: ");
+PrintArray(arrayOne);
