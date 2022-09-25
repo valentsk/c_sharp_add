@@ -55,17 +55,47 @@ void AddArray(int[] array)
         }
         index++;
     }
+    Console.WriteLine();
 }
 
 void RemoveArray(int[] array)
 {
+    int length = array.Length;
+    int [] arrayNew = new int[length - 1]; 
+    int index = 0;
+    int indexNew = 0;
+
+    int indexNumber = new Random().Next(0, length); // выбирает случайный индекс
+    Console.WriteLine($"Число, которое удалится из массива: {array[indexNumber]}, индекс: {indexNumber}");
+ 
+    while (index < length)
+    {
+        if (index == indexNumber)
+        {
+            index++; // пропускаем индекс в 1 массиве
+        }
+        else
+        {
+            arrayNew[indexNew] = array[index];
+            Console.Write(arrayNew[indexNew]);
+            if (index < length - 1)
+            {
+               Console.Write(", ");    
+            }
+            index++;
+            indexNew++;
+        }
+
+    }
+    Console.WriteLine();
+
+}
 
 Console.Write("Введите размерность массива: ");
 int size = int.Parse(Console.ReadLine()!);
 int [] arrayOne = new int[size]; 
-// int [] arrayAdd = new int[size + 1]; 
-// int [] arrayRemove = new int[size - 1]; 
 
 FillArray(arrayOne);
 PrintArray(arrayOne);
 AddArray(arrayOne);
+RemoveArray(arrayOne);
